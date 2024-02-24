@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Farmhouse Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    form {
+      width: 50%;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 5px;
+      margin-top: 10px;
+      background-color: #337ab7;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <form action="/host/create" method="post">
+  	<div th:if="${SuccessMessages}" class="alert alert-danger">
+				<p th:text="${SuccessMessages}"></p>  
+				</div>
+    <label for="location">Location:</label>
+    <input type="text" id="location" name="location">
+
+    <label for="mobileNo">Mobile No:</label>
+    <input type="text" id="mobileNo" name="mobileNo">
+
+    <label for="noOfBeds">No. of Beds:</label>
+    <input type="number" id="noOfBeds" name="noOfBeds">
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price">
+
+    <input type="submit" value="Register Property">
+  </form>
+</body>
+</html>

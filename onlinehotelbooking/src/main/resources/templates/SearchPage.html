@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmhouse Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://source.unsplash.com/random/1600x900/?farmhouse,hotel,nature');
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .navbar {
+		    display: flex;
+		    justify-content: flex-end;
+		    align-items: center;
+		    height: 80px;
+		    padding: 0 20px;
+		    background-color: rgba(0, 0, 0, 0.2);
+		    position: fixed;
+		    top: 0;
+		    right: 0; /* Updated property */
+		    z-index: 1;
+			}
+
+        .logout-button {
+            margin-right:100px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        h1 {
+		    font-size: 36px;
+		    margin-bottom: 20px;
+		    background-color: rgba(255, 255, 255, 0.8); /* Updated property */
+		}
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        select {
+            margin-right: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        option {
+            padding: 10px;
+            background-color: white;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: fixed; right: 20px; top: 20px; z-index: 1;">
+   <form action="sellerapi/feedback" method="POST">
+        <button type="submit" class="action-button">History</button>
+    </form>
+</div>
+    <div class="content">
+        <h1>Explore Farmhouses in your city</h1>
+        <form action="sellerapi/search" method="get">
+            <select name="city" id="city">
+                <option value="chennai">Chennai</option>
+                <option value="hyderabad">Hyderabad</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="banglore">Bangalore</option>
+                <option value="coimbatore">Coimbatore</option>
+                <option value="kochi">Kochi</option>
+                <option value="delhi">Delhi</option>
+                <option value="noida">Noida</option>
+            </select>
+            <button type="submit" class="get-info-button">Search</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Farmhouse Booking</title>
+    <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0069d9;
+}
+    
+    
+    
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Farmhouse Booking</h1>
+      <div th:if="${SuccessMessage}" class="alert alert-danger">
+				<p th:text="${SuccessMessage}"></p>  
+		</div>
+      <form id="checkInForm" action="sellerapi/booking" method="GET">
+        <div class="form-group">
+          <label for="checkIn">Check-in Date</label>
+          <input type="date" class="form-control" id="checkIn" name="checkIn" required />
+        </div>
+        <div class="form-group">
+          <label for="checkOut">Check-out Date</label>
+          <input type="date" class="form-control" id="checkOut" name="checkOut" required />
+        </div>
+        <div class="form-group">
+          <label for="noOfPeople">Number of People</label>
+          <input type="number" class="form-control" id="noOfPeople" name="noOfPeople" required />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Book Farmhouse</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

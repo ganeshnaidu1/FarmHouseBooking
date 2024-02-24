@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Seller Price</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mb-5 {
+            margin-bottom: 30px;
+        }
+        
+        .form-label {
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            resize: vertical;
+        }
+        
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">Update Seller Price</h1>
+       <div th:if="${SuccessMessages}" class="alert alert-danger">
+				<p th:text="${SuccessMessages}"></p>  
+				</div>
+        
+        <form id="generateOtpForm" action="updateSeller" method="GET" onsubmit="checkPasswordMatch()">
+            <div class="mb-3">
+                <div id="errorMessage"></div>
+                <label for="hotelId" class="form-label">Hotel ID</label>
+                <input type="number" class="form-control" id="hotelId" name="hotelId" required>
+            </div>
+            <div class="mb-3">
+                <label for="newPrice" class="form-label">New Price</label>
+                <input type="number" class="form-control" id="newPrice" name="newPrice" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Generate OTP</button>
+        </form>
+        <form id="verifyOtpForm" action="verifyOtp" method="GET">
+            <div class="mb-3">
+                <label for="enteredOtp" class="form-label">Enter OTP</label>
+                <input type="number" class="form-control" id="enteredOtp" name="otp" required>
+            </div>
+            <button type="submit" id="submitOtp" class="btn btn-primary">Submit</button>
+        </form>
+        
+        
+        <div id="registerProperty">
+            <br /> 
+          <p>Register your property! <a href="/host/register">click here</a> </p>
+</div>
+    </div>
+    <script>
+    </script>
+</body>
+</html>

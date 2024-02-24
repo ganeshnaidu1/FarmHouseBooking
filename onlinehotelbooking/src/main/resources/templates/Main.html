@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://source.unsplash.com/random/1600x900/?nature,landscape,travel');
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 800px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: auto;
+            position: relative;
+        }
+
+        form {
+            width: 45%;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #registerProperty {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-top: 20px;
+        }
+
+        #registerProperty a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+
+        #registerProperty a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+        }
+
+        #successMessage {
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .error-message-container {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    margin: 0;
+    font-size: 14px;
+}
+    </style>
+</head>
+
+<body>
+<div class="forms-container">
+    <div class="login-form">
+        <!-- Your login form content here -->
+        <form action="/login" method="post">
+                <h2>Login</h2>
+                <div th:if="${errorMessage}" class="alert alert-danger">
+				<p th:text="${errorMessage}"></p>  
+				</div>
+                <input type="email" name="emailId" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+    </div>
+    <div class="register-form">
+        <!-- Your register form content here -->
+        
+        <form action="/createaccount" method="post" onsubmit="checkPasswordMatch()">
+                <h2>Register</h2>
+                <div th:if="${SuccessMessage}" class="alert alert-danger">
+				<p th:text="${SuccessMessage}"></p>  
+				</div>
+                <input type="text" id="name" name="name" placeholder="Name" required>
+                <input type="email" id="emailId" name="emailId" placeholder="Email" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                <div id="errorMessage"></div>
+                <div id="successMessage"></div>
+                <button type="submit">Register User</button>
+            </form>
+    </div>
+    <div id="registerProperty">
+            <br /> 
+          <p>If you're a seller? <a href="host/">click here</a> </p>
+</div>
+</div>
+<style>
+    .forms-container {
+        overflow: hidden; /* Clear floats */
+    }
+
+    .login-form,
+    .register-form {
+        width: 50%; /* Adjust as needed */
+        float: left;
+        padding: 10px;
+    }
+</style>
+
+
+
+
+            <script>
+            function checkPasswordMatch() {
+        	    var password = document.getElementById("password").value;
+        	    var confirmPassword = document.getElementById("confirmPassword").value;
+        	    var errorMessage = document.getElementById("errorMessage");
+        	    var successMessage = document.getElementById("successMessage");
+        	    if (password != confirmPassword) {
+        	        errorMessage.textContent = "Passwords do not match";
+        	        errorMessage.classList.add("error");
+        	        return false;
+        	    } else {
+        	        successMessage.textContent = "Registration Succesful please login";
+        	        successMessage.classList.add("error");
+        	        return true;
+        	    }
+        	}
+
+         
+</script>
+
